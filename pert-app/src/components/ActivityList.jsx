@@ -1,4 +1,4 @@
-const ActivityList = ({ activities }) => {
+const ActivityList = ({ activities, onDeleteActivity }) => {
   return (
     <div className="bg-white p-8 rounded-2xl shadow-xl border border-gray-200 mb-8">
       <h2 className="text-2xl font-semibold mb-6 text-gray-900 border-b border-gray-200 pb-2">Lista de Actividades</h2>
@@ -16,6 +16,7 @@ const ActivityList = ({ activities }) => {
                 <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Unidad</th>
                 <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Esperado</th>
                 <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Varianza</th>
+                <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -31,6 +32,14 @@ const ActivityList = ({ activities }) => {
                     <td className="px-6 py-4 text-sm text-gray-700">{activity.unit || 'días'}</td>
                     <td className="px-6 py-4 text-sm text-gray-700 font-semibold">{expected.toFixed(2)}</td>
                     <td className="px-6 py-4 text-sm text-gray-700">{variance.toFixed(2)}</td>
+                    <td className="px-6 py-4 text-sm text-gray-700">
+                      <button
+                        onClick={() => onDeleteActivity(activity.id)}
+                        className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md text-xs font-medium transition-colors"
+                      >
+                        Eliminar
+                      </button>
+                    </td>
                   </tr>
                 );
               })}

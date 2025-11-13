@@ -10,6 +10,10 @@ function App() {
     setActivities([...activities, activity])
   }
 
+  const deleteActivity = (id) => {
+    setActivities(activities.filter(activity => activity.id !== id))
+  }
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-8">
@@ -19,7 +23,7 @@ function App() {
           <p className="text-lg text-gray-600">Herramienta profesional para la gestión de proyectos</p>
         </header>
         <ActivityForm onAddActivity={addActivity} />
-        <ActivityList activities={activities} />
+        <ActivityList activities={activities} onDeleteActivity={deleteActivity} />
         <Calculations activities={activities} />
       </div>
     </div>
