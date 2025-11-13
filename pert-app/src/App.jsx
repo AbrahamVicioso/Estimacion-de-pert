@@ -2,7 +2,6 @@ import { useState } from 'react'
 import ActivityForm from './components/ActivityForm'
 import ActivityList from './components/ActivityList'
 import Calculations from './components/Calculations'
-import { findCriticalPath } from './utils/pertUtils'
 
 function App() {
   const [activities, setActivities] = useState([])
@@ -11,10 +10,6 @@ function App() {
     setActivities([...activities, activity])
   }
 
-  let criticalPath = [];
-  if (activities.length > 0) {
-    criticalPath = findCriticalPath(activities);
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-8">
@@ -25,7 +20,7 @@ function App() {
         </header>
         <ActivityForm onAddActivity={addActivity} />
         <ActivityList activities={activities} />
-        <Calculations activities={activities} criticalPath={criticalPath} />
+        <Calculations activities={activities} />
       </div>
     </div>
   )
